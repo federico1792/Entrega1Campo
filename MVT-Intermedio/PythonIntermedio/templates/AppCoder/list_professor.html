@@ -1,0 +1,60 @@
+<!-- Se agrega de que html padre hereda-->
+{% extends 'base.html' %}
+
+<!--Bloque que cambia del titulo-->
+{% block title %}
+  Lista de profesores
+{% endblock %}
+<!--Bloque que activa-->
+{% block indexactive %}
+  <li class="nav-item">
+{% endblock %}
+{% block groupactive %}
+  <li class="nav-item">
+{% endblock %}
+{% block studentactive %}
+  <li class="nav-item">
+{% endblock %}
+{% block professoractive %}
+  <li class="nav-item active">
+{% endblock %}
+<!--Bloque que cambia del contenido-->
+{% block content %}
+  <br>
+  <form class="form-inline my-2 my-lg-0 justify-content-center" action="/AppCoder/list_professor" method="GET">
+    <a href="/AppCoder/create_professor" class="btn btn-primary">Crear profesor</a>
+    <input class="form-control mr-sm-2 ml-2" type="search" placeholder="Profesion" aria-label="Search" name="search">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+  <br>
+
+    <table class="container table">
+        <thead class="thead thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Profesion</th>
+        </tr>
+        </thead>
+        {% for professor in professor %}
+        <tbody>
+        <tr>
+            <th scope="row">{{professor.name}}</th>
+            <td>{{professor.lastname}}</td>
+            <td>{{professor.email}}</td>
+            <td>{{professor.profession}}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

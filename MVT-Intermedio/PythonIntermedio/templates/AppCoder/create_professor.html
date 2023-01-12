@@ -1,0 +1,63 @@
+<!-- Se agrega de que html padre hereda-->
+{% extends 'base.html' %}
+
+<!--Bloque que cambia del titulo-->
+{% block title %}
+  Profesores
+{% endblock %}
+<!--Bloque que activa-->
+{% block indexactive %}
+  <li class="nav-item">
+{% endblock %}
+{% block groupactive %}
+  <li class="nav-item">
+{% endblock %}
+{% block studentactive %}
+  <li class="nav-item">
+{% endblock %}
+{% block professoractive %}
+  <li class="nav-item active">
+{% endblock %}
+<!--Bloque que cambia del contenido-->
+{% block content %}
+  <div class="text-center">
+    <h1>Bienvenido a la creacion de profesores</h1>
+  </div>
+  
+
+  {% if form %}
+
+    <div class="container border d-flex justify-content-center">
+
+      <form action="" method="POST">
+        {% csrf_token %}
+        <br>
+        <table>
+          {{form.as_table}}
+        </table>
+
+        <div class="text-center">
+          <br>
+          <button type="submit" class="btn btn-primary">Crear profesor</button>
+          <a href="/AppCoder/list_professor" class="btn btn-warning">Volver al listado</a>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+  {% if form_errors %}
+    <h3 style="color: red;">Error:</h3>
+    {{form_errors}}
+  {% endif %}
+  
+  {% if message %}
+    <div class="text-center">
+      <br>
+      <h3 style="color: green;">{{ message }}</h3>
+      <br>
+      <br>
+      <a href="/AppCoder/create_professor" class="btn btn-primary">Volver a crear un profesor</a>
+      <a href="/AppCoder/list_professor" class="btn btn-warning">Volver al listado</a>
+    </div>
+  {% endif %}
+
+{% endblock %}
